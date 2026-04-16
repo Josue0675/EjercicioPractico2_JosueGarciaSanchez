@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{general/fragmentos :: head('Gestión de Roles')}"></head>
+<body>
+<header th:replace="~{general/fragmentos :: header}"></header>
+<div class="container my-4">
+    <div th:if="${exito}" class="alert alert-success" th:text="${exito}"></div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="m-0">Gestión de Roles</h3>
+        <a class="btn btn-primary" th:href="@{/rol/nuevo}">Nuevo</a>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark"><tr><th>ID</th><th>Nombre</th><th>Acciones</th></tr></thead>
+        <tbody>
+            <tr th:each="r : ${roles}">
+                <td th:text="${r.id}"></td><td th:text="${r.nombre}"></td>
+                <td>
+                    <a class="btn btn-warning btn-sm" th:href="@{/rol/modificar/{id}(id=${r.id})}">Editar</a>
+                    <a class="btn btn-danger btn-sm" th:href="@{/rol/eliminar/{id}(id=${r.id})}" onclick="return confirm('¿Desea eliminar?');">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="~{general/fragmentos :: footer}"></footer>
+</body>
+</html>

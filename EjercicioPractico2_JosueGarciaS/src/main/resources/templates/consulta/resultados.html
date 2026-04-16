@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{general/fragmentos :: head('Resultados de Eventos')}"></head>
+<body>
+<header th:replace="~{general/fragmentos :: header}"></header>
+<div class="container my-4">
+    <h3 th:text="${tituloConsulta}"></h3>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark"><tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Fecha</th><th>Capacidad</th><th>Activo</th></tr></thead>
+        <tbody>
+            <tr th:each="e : ${eventos}">
+                <td th:text="${e.id}"></td>
+                <td th:text="${e.nombre}"></td>
+                <td th:text="${e.descripcion}"></td>
+                <td th:text="${e.fecha}"></td>
+                <td th:text="${e.capacidad}"></td>
+                <td th:text="${e.activo}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-secondary" th:href="@{/consulta/listado}">Volver</a>
+</div>
+<footer th:replace="~{general/fragmentos :: footer}"></footer>
+</body>
+</html>

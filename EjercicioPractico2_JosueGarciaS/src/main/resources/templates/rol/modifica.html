@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{general/fragmentos :: head('Rol')}"></head>
+<body>
+<header th:replace="~{general/fragmentos :: header}"></header>
+<div class="container my-4">
+    <form th:action="@{/rol/guardar}" method="post" th:object="${rol}">
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-3"><label class="form-label">Nombre del rol</label><input class="form-control" th:field="*{nombre}" required></div>
+        <button class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+<footer th:replace="~{general/fragmentos :: footer}"></footer>
+</body>
+</html>

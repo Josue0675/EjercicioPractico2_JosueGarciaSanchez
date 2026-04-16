@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{general/fragmentos :: head('Consultas')}"></head>
+<body>
+<header th:replace="~{general/fragmentos :: header}"></header>
+<div class="container my-4">
+    <h3 class="mb-3">Consultas avanzadas</h3>
+    <div class="alert alert-info">Cantidad de eventos activos: <strong th:text="${conteoActivos}"></strong></div>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <form class="card card-body" th:action="@{/consulta/estado}" method="get">
+                <h5>Buscar eventos por estado</h5>
+                <select class="form-select mb-2" name="activo">
+                    <option value="true">Activos</option>
+                    <option value="false">Inactivos</option>
+                </select>
+                <button class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form class="card card-body" th:action="@{/consulta/fechas}" method="get">
+                <h5>Buscar eventos por rango de fechas</h5>
+                <input class="form-control mb-2" type="date" name="inicio" required>
+                <input class="form-control mb-2" type="date" name="fin" required>
+                <button class="btn btn-success">Buscar</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form class="card card-body" th:action="@{/consulta/nombre}" method="get">
+                <h5>Buscar eventos por nombre</h5>
+                <input class="form-control mb-2" type="text" name="nombre" placeholder="Nombre parcial" required>
+                <button class="btn btn-dark">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <form class="card card-body" th:action="@{/consulta/usuarios-rol}" method="get">
+                <h5>Buscar usuarios por rol</h5>
+                <select class="form-select mb-2" name="rol">
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="ORGANIZADOR">ORGANIZADOR</option>
+                    <option value="CLIENTE">CLIENTE</option>
+                </select>
+                <button class="btn btn-warning">Buscar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{general/fragmentos :: footer}"></footer>
+</body>
+</html>
